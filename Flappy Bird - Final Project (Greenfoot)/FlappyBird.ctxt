@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=FlappyBird
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ FlappyBird\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ FlappyBird\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2
+comment1.params=imageNumber
+comment1.target=FlappyBird(int)
+comment1.text=\r\n\ FlappyBird\ is\ the\ constructor\ for\ objects\ of\ the\ type\ FlappyBird\r\n\ \r\n\ @param\ imageNumber\ The\ number\ that\ corresponds\ to\ a\ randomized\ image\ for\ FlappyBird\r\n\ @return\ An\ object\ of\ type\ FlappyBird\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ FlappyBird\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=3

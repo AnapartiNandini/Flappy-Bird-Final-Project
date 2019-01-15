@@ -54,6 +54,6 @@ public class MyWorld extends greenfoot.World
     
     private void addActors()
     {
-        addObject(new FlappyBird (), getWidth()/4, getHeight()/2);
+        addObject(new FlappyBird(), getWidth()/4, getHeight()/2);
     }
 }
