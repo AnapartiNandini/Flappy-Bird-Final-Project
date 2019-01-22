@@ -31,6 +31,9 @@ public class FlappyBird extends Actor
         //Sets the location to the current x loacation and the current y location  plus the value for downY
         setLocation(getX(), (int)(getY() + downY));
         
+        //Make a method call to ifTouchingPipe()
+        ifTouchingPipe();
+        
         //Make a method call to checkKeyPressed()
         checkKeyPressed();
                 
@@ -40,7 +43,24 @@ public class FlappyBird extends Actor
         //Change the value of down to be the sum of the value of gravity and the value of downY to increase the rate of the speed at which the flappy bird is moving down
         downY = downY + gravity;
     }
-       
+    /**
+     * ifTouchingPipe causes the game to end if the Frog touches the Fly object
+     * 
+     * @param None There are no parameters
+     * @return Nothing is returned
+     */
+    public void ifTouchingPipe()
+    {
+        //If isTouching(TopPipe.class) is equal to true 
+        if(getOneIntersectingObject(TopPipe.class) != null)
+        {
+            //Display GameOver actor at the center of the world
+            getWorld().addObject(new GameOver(),getWorld().getWidth()/2,getWorld().getHeight()/2);
+            
+            //Stop the sceanario
+            Greenfoot.stop();
+        }   
+    }   
     /**
      * checkKeyPressed checks if a key has been pressed, if so, what to do.
      * 

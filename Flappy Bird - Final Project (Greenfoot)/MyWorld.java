@@ -47,13 +47,18 @@ public class MyWorld extends greenfoot.World
     {
         //increases the value for the counter variable by 1 each time the cycle is run
         counter++;
+        
+        
         //If counter is equal to 100...
         if(counter == 100)
         {
             //add a pipe object to the world
-            addObject(new Pipe(),getWidth(),getHeight()/2 + getHeight()/4 + getHeight()/8);
+            addObject(new BottomPipe(),getWidth(), Greenfoot.getRandomNumber(getHeight()/2) + 250);
             
-            //Set counter to equal to equal to 0
+            //add a pipe object to the world
+            addObject(new BottomPipe(),getWidth(),  Greenfoot.getRandomNumber(getHeight()/2) - 150);
+            
+            //Set the value of counter to zero
             counter = 0;
         }
     }        
