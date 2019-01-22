@@ -8,46 +8,71 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FlappyBird extends Actor
 {
-    //Instance Variables that store the possible images for the Flappy Bird
-    private GreenfootImage yellowFlappyBird1 = new GreenfootImage("Flappy_image_1_YELLOW");
-    private GreenfootImage yellowFlappyBird2 = new GreenfootImage("Flappy_image_2_YELLOW");
-    
+    //Set the instance variables
+    private double downY = 0;
+    private double gravity = 0.8;
     /**
      * FlappyBird is the constructor for objects of the type FlappyBird
      * 
-     * @param imageNumber The number that corresponds to a randomized image for FlappyBird
+     * @param None There are no Parameters
      * @return An object of type FlappyBird
      */
-    public FlappyBird(int imageNumber)
+    public FlappyBird()
     {
-        //Make  method call to initializeImages
-        //initializeImages();
         
-        
-        //If imageNumber is equal to 0...
-        if( imageNumber == 0 )
-        {
-            //Sets the image to yellowFlappyBird1
-            setImage(yellowFlappyBird1);
-        }
-                
-        //Otherwise
-        else
-        {
-            //Sets the image to yellowFlappyBird2
-            setImage(yellowFlappyBird2);
-        }
     }
     
-    /**
-     * 
-     */
     /**
      * Act - do whatever the FlappyBird wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
+        //Sets the location to the current x loacation and the current y location  plus the value for downY
+        setLocation(getX(), (int)(getY() + downY));
         
-    }    
+        //Make a method call to checkKeyPressed()
+        checkKeyPressed();
+                
+        //Make a method call to displayGameOver()
+        displayGameOver();
+        
+        //Change the value of down to be the sum of the value of gravity and the value of downY to increase the rate of the speed at which the flappy bird is moving down
+        downY = downY + gravity;
+    }
+       
+    /**
+     * checkKeyPressed checks if a key has been pressed, if so, what to do.
+     * 
+     * @param None There are no Parameters
+     * @return Nothing is returned
+     */
+    private void checkKeyPressed()
+    {
+        //if user presses the UP arrow, launch the Flappy Bird obbject upward
+        if(Greenfoot.isKeyDown("up") == true)
+        {
+            //set the value of downY to be 9.9
+            downY = -9.9;
+        }
+    }
+        
+    /**
+     * displayGameOver displays "Game Over" when the Flappy bird reaches the bottom of the window
+     * 
+     * @param None There are no Parameters
+     * @return Nothing is returned
+     */
+    private void displayGameOver()
+    {
+        //If the current y location of the Flappy Bird is greater than or below the world...
+        if(getY() > getWorld().getHeight())
+        {
+            //Display GameOver actor at the center of the world
+            getWorld().addObject(new GameOver(),getWorld().getWidth()/2,getWorld().getHeight()/2);
+            
+            //End the scenario
+            Greenfoot.stop();
+        }
+    }
 }

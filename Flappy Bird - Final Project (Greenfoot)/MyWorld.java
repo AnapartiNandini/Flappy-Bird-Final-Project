@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends greenfoot.World
 {
-
+    //Make instance variables
+    private int counter = 0;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -16,43 +18,43 @@ public class MyWorld extends greenfoot.World
     public MyWorld()
     {    
         //Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 600, 1);
-        
-        //Make a method call to prepareWorld
-        prepareWorld();
-        
+        super(600, 400, 1, false);
+                
         //Make a variable that stores a new FlappyBird object
-        FlappyBird flappy = new FlappyBird(1);
+        FlappyBird flappy = new FlappyBird();
         
         //Adds a FlappyBird objectat the width of a quartre of the the window and the height of half of the window
         addObject(flappy, getWidth()/4, getHeight()/2);
     }
     
     /**
-     * prepareWorld prepares the world as in sets up the back-drop
+     * Act - do whatever the FlappyBird wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        //Make a method call to prepareWorld
+        addPipes();
+    }
+    
+    /**
+     * addPipes adds a Pipe object to the world every 100 act cycles
      * 
      * @param None There are no parameters
      * @return Nothing is returned 
      */
-    private void prepareWorld()
+    private void addPipes()
     {
-        //Sets the color of the background to cyan
-        getBackground().setColor(Color.CYAN);
-        
-        //Draws a rectangle at (0,0) at a width of the window's width and a height of the window's height minus a quatre
-        getBackground().fillRect(0,0,getWidth(),getHeight()-getHeight()/4);
-        
-        //Sets the color of the ground to be green
-        getBackground().setColor(Color.GREEN);
-        
-        //Draws a rectangle at (0,getHeight()-getHeight()/4, getWidth(), getHeight())
-        getBackground().fillRect(0,getHeight()-getHeight()/4, getWidth(), getHeight());
-        
-        //Sets the color of the "horizon" to orange
-        getBackground().setColor(Color.ORANGE);
-        
-        //Draws a rectangle at (0,getHeight() - getHeight()/4 - 5, getWidth(), 10)
-        getBackground().fillRect(0,getHeight() - getHeight()/4 - 5, getWidth(), 10);
-    }
-        
+        //increases the value for the counter variable by 1 each time the cycle is run
+        counter++;
+        //If counter is equal to 100...
+        if(counter == 100)
+        {
+            //add a pipe object to the world
+            addObject(new Pipe(),getWidth(),getHeight()/2 + getHeight()/4 + getHeight()/8);
+            
+            //Set counter to equal to equal to 0
+            counter = 0;
+        }
+    }        
 }
