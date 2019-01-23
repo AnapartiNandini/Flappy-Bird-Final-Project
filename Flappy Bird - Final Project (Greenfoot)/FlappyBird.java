@@ -51,7 +51,7 @@ public class FlappyBird extends Actor
      */
     public void ifTouchingPipe()
     {
-        //If isTouching(TopPipe.class) is equal to true 
+        //If isTouching(TopPipe.class) is not equal to null...
         if(getOneIntersectingObject(TopPipe.class) != null)
         {
             //Display GameOver actor at the center of the world
@@ -59,7 +59,29 @@ public class FlappyBird extends Actor
             
             //Stop the sceanario
             Greenfoot.stop();
-        }   
+        }
+        
+        //If isTouching(BottomPipe.class) is not equal to null...
+        if(getOneIntersectingObject(BottomPipe.class) != null)
+        {
+            //Display GameOver actor at the center of the world
+            getWorld().addObject(new GameOver(),getWorld().getWidth()/2,getWorld().getHeight()/2);
+            
+            //Stop the sceanario
+            Greenfoot.stop();
+        }
+        
+        if(getOneIntersectingObject(TopPipe.class) == null)
+        {
+            //call the method update from the MyWorld class
+            ( (MyWorld)getWorld() ).update();
+        }
+        
+        if(getOneIntersectingObject(BottomPipe.class) == null)
+        {
+            //call the method update from the MyWorld class
+            ( (MyWorld)getWorld() ).update();
+        }
     }   
     /**
      * checkKeyPressed checks if a key has been pressed, if so, what to do.

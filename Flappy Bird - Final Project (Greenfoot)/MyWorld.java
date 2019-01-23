@@ -10,7 +10,11 @@ public class MyWorld extends greenfoot.World
 {
     //Make instance variables
     private int counter = 0;
+    private int FIRST_PIPE = 240;
+    private int PIPE_SPACING = 100;
     
+    //create a Scoreboard variable that we will store a Scoreboard in later
+    private Scoreboards score;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -25,6 +29,11 @@ public class MyWorld extends greenfoot.World
         
         //Adds a FlappyBird objectat the width of a quartre of the the window and the height of half of the window
         addObject(flappy, getWidth()/4, getHeight()/2);
+        
+        //Add a scoreboard object to the world in the top left hand corner.
+        //Make sure to store this as an instance variable so you have access to it later.
+        score = new Scoreboards();
+        addObject(score,75,25);
     }
     
     /**
@@ -35,6 +44,25 @@ public class MyWorld extends greenfoot.World
     {
         //Make a method call to prepareWorld
         addPipes();
+    }
+    
+    /**
+     * update will call addToScore from the scoreboard object we stored earlier, and add a point to that scoreboard
+     * 
+     * @param None There are no parameters
+     * @return Notning is Returned
+     */
+    public void update()
+    {
+        //If counter is equal to the value of FIRST_PIPE
+        if(counter == FIRST_PIPE )
+        {
+           //call the method addToScore of score 
+           score.addToScore();
+           
+           //Add 100 pixles to the value of FIRST_PIPE
+           FIRST_PIPE = FIRST_PIPE + 100;
+        }        
     }
     
     /**
@@ -49,17 +77,14 @@ public class MyWorld extends greenfoot.World
         counter++;
         
         
-        //If counter is equal to 100...
-        if(counter == 100)
+        //If counter modulus 100 equal to 0...
+        if(counter % 100 == 0)
         {
-            //add a pipe object to the world
+            //add a bottom pipe object to the world
             addObject(new BottomPipe(),getWidth(), Greenfoot.getRandomNumber(getHeight()/2) + 250);
             
-            //add a pipe object to the world
-            addObject(new BottomPipe(),getWidth(),  Greenfoot.getRandomNumber(getHeight()/2) - 150);
-            
-            //Set the value of counter to zero
-            counter = 0;
+            //add a top pipe object to the world
+            addObject(new TopPipe(),getWidth(),  Greenfoot.getRandomNumber(getHeight()/2) - 150);            
         }
     }        
 }

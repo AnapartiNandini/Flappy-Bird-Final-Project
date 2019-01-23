@@ -9,14 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BottomPipe extends Actor
 {
     //Create instance variables
-    private int pipeDistance = 4;
+    private final int PIPE_DISTANCE = 4;
     /**
      * Act - do whatever the BottomPipe wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        // Set the location of the Pipe to be 4 pixles less than the current x location and the current y location
-        setLocation(getX() - pipeDistance, getY());
+        // Set the location of the Pipe to be PIPE_DISTANCE less than the current x location and the current y location
+        setLocation(getX() - PIPE_DISTANCE, getY());
     }    
 }
