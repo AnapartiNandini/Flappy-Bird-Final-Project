@@ -1,4 +1,9 @@
-
+ /**
+ * Name: Nandini Anaparti
+ * Course: Software Development
+ * Teacher: Mr.Scott Hardman
+ * Date Last Modified: 1/24/2019
+ */
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import javax.swing.JOptionPane;
 /**
