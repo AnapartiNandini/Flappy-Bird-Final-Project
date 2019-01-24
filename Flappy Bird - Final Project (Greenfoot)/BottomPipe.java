@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BottomPipe extends Actor
+public class BottomPipe extends Pipe
 {
     //Create instance variables
     private final int PIPE_DISTANCE = 4;

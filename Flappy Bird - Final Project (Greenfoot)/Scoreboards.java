@@ -25,9 +25,14 @@ public class Scoreboards extends Actor
         points++;
         GreenfootImage img = getImage();
         img.clear();
-        if(points < 3) 
+        if(points < 1000) 
         {
-            img.drawString("Score: " + points, 5,25);              
-        }    
+            img.drawString("Score: " + points, 5,25);
+        }
+        else 
+        {
+            img.drawString("You win!!!", 5,25);
+            Greenfoot.stop();
+        }
     }
 }

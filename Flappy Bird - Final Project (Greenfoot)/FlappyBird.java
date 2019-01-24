@@ -11,18 +11,8 @@ public class FlappyBird extends Actor
     //Set the instance variables
     private double downY = 0;
     private double gravity = 0.8;
-    /**
-     * FlappyBird is the constructor for objects of the type FlappyBird
-     * 
-     * @param None There are no Parameters
-     * @return An object of type FlappyBird
-     */
-    public FlappyBird()
-    {
-        
-    }
     
-    /**
+       /**
      * Act - do whatever the FlappyBird wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
@@ -54,6 +44,9 @@ public class FlappyBird extends Actor
         //If isTouching(TopPipe.class) is not equal to null...
         if(getOneIntersectingObject(TopPipe.class) != null)
         {
+            //call the method playerLose from the MyWorld class
+            ( (MyWorld)getWorld() ).playerLose();
+            
             //Display GameOver actor at the center of the world
             getWorld().addObject(new GameOver(),getWorld().getWidth()/2,getWorld().getHeight()/2);
             
@@ -64,6 +57,9 @@ public class FlappyBird extends Actor
         //If isTouching(BottomPipe.class) is not equal to null...
         if(getOneIntersectingObject(BottomPipe.class) != null)
         {
+            //call the method playerLose from the MyWorld class
+            ( (MyWorld)getWorld() ).playerLose();
+            
             //Display GameOver actor at the center of the world
             getWorld().addObject(new GameOver(),getWorld().getWidth()/2,getWorld().getHeight()/2);
             
@@ -110,6 +106,9 @@ public class FlappyBird extends Actor
         //If the current y location of the Flappy Bird is greater than or below the world...
         if(getY() > getWorld().getHeight())
         {
+            //call the method playerLose from the MyWorld class
+            ( (MyWorld)getWorld() ).playerLose();
+            
             //Display GameOver actor at the center of the world
             getWorld().addObject(new GameOver(),getWorld().getWidth()/2,getWorld().getHeight()/2);
             
